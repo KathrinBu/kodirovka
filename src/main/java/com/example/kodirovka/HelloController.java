@@ -1,8 +1,6 @@
 package com.example.kodirovka;
 
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 import java.io.File;
@@ -17,26 +15,41 @@ public class HelloController {
 
 public class Result{
 
-
     public Result() throws FileNotFoundException {
         File file=new File("1.txt");
         Scanner scanner=new Scanner(file);
-        TreeSet<String> treeSet = new TreeSet<>();
+        ArrayList<String> arrayList=new ArrayList<>();
+        int count=0;
         while (scanner.hasNextLine()){
-            treeSet.add(scanner.nextLine());
+            arrayList.add(scanner.nextLine());
+            count++;
+        }
+        Map<Integer, String> map=new HashMap<>();
+        Collection<Integer> collection=map.keySet();
+        for (String str:arrayList) {
+            map.put(count,str);
         }
         File file2=new File("2.txt");
         Scanner scanner1=new Scanner(file2);
-        Map<String, String> secret = new HashMap<>();
-        String[] keys=new String[10];
-        String[] values=new String[10];
+        String[] keys =scanner1.nextLine().split(" ");
+        String[] a=new String[(keys.length+1)/2];
+        String[] b=new String[(keys.length-a.length)];
 
-        while (scanner1.hasNextLine()){
-            secret.put(keys.toString(),values.toString());
+                for (Integer k: collection) {
+                    String s= map.get(k);
+                    for (int i = 0; i < keys.length; i++) {
+                        if(s.equals(a.toString())){
+                            map.replace(k,s,b.toString());
+
+                        }
+                    }
+
+                }
+            }
         }
-        if(treeSet.contains(keys)){
-            treeSet.getClass().replace);
+
+
         }
-    }
-}
-}
+
+
+
