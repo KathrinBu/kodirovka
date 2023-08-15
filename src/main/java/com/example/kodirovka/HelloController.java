@@ -1,6 +1,7 @@
 package com.example.kodirovka;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 import java.io.File;
@@ -12,44 +13,44 @@ public class HelloController {
     TextArea vvod;
     @FXML
     TextArea result;
+    @FXML
+    Button button;
 
-public class Result{
 
-    public Result() throws FileNotFoundException {
-        File file=new File("1.txt");
-        Scanner scanner=new Scanner(file);
-        ArrayList<String> arrayList=new ArrayList<>();
-        int count=0;
-        while (scanner.hasNextLine()){
-            arrayList.add(scanner.nextLine());
-            count++;
+        public void doResult() throws FileNotFoundException {
+            List<String> decrypted=vvodTeksta();
+            Map<String,String> slovar=slovar();
+            decrypted.replaceAll(a->slovar.get():slovar.containsKey());
         }
-        Map<Integer, String> map=new HashMap<>();
-        Collection<Integer> collection=map.keySet();
-        for (String str:arrayList) {
-            map.put(count,str);
+
+        public List<String> vvodTeksta() throws FileNotFoundException {
+            File file = new File("1.txt");
+            Scanner scanner = new Scanner(file);
+            ArrayList<String> arrayList = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                arrayList.add(scanner.nextLine());
+            }
+            return arrayList;
         }
-        File file2=new File("2.txt");
-        Scanner scanner1=new Scanner(file2);
-        String[] keys =scanner1.nextLine().split(" ");
-        String[] a=new String[(keys.length+1)/2];
-        String[] b=new String[(keys.length-a.length)];
 
-                for (Integer k: collection) {
-                    String s= map.get(k);
-                    for (int i = 0; i < keys.length; i++) {
-                        if(s.equals(a.toString())){
-                            map.replace(k,s,b.toString());
+        public Map<String, String> slovar() throws FileNotFoundException {
+            File file = new File("2.txt");
+            Scanner scanner = new Scanner(file);
+            Map<String, String> map = new HashMap<>();
+            List<String> list = List.of(scanner.nextLine().split(" "));
 
-                        }
-                    }
+            for (int i = 0; i < list.size(); i = i + 2) {
+                String key = list.get(i);
 
+                for (int j = 1; j < list.size(); j = j + 2) {
+                    String value = list.get(i);
+                    map.put(key, value);
                 }
             }
+            return map;
         }
+    }
 
-
-        }
 
 
 
