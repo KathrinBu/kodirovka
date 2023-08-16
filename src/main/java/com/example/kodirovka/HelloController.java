@@ -7,6 +7,7 @@ import javafx.scene.control.TextArea;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class HelloController {
     @FXML
@@ -37,16 +38,20 @@ public class HelloController {
             File file = new File("2.txt");
             Scanner scanner = new Scanner(file);
             Map<String, String> map = new HashMap<>();
-            List<String> list = List.of(scanner.nextLine().split(" "));
-
-            for (int i = 0; i < list.size(); i = i + 2) {
-                String key = list.get(i);
-
-                for (int j = 1; j < list.size(); j = j + 2) {
-                    String value = list.get(i);
-                    map.put(key, value);
-                }
+            List<String> list;
+            String key = "";
+            String value="";
+            while (scanner.hasNextLine()) {
+                list= new ArrayList<>(List.of(scanner.nextLine().split(" ")));
+                for (int i = 0; i < list.size(); i++) {
+                    if (i == 0) {
+                        key = list.get(i);
+                } else {
+                    value+= Integer.parseInt(list.get(i));
+                    }
+                } map.put(key,value);
             }
+
             return map;
         }
     }
