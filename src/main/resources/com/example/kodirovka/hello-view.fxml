@@ -4,8 +4,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kodirovka.HelloController">
    <children>
       <TextArea fx:id="vvod" layoutX="14.0" layoutY="67.0" prefHeight="200.0" prefWidth="200.0" />
       <TextArea fx:id="result" layoutX="316.0" layoutY="67.0" prefHeight="200.0" prefWidth="200.0" />

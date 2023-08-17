@@ -21,7 +21,13 @@ public class HelloController {
         public void doResult() throws FileNotFoundException {
             List<String> decrypted=vvodTeksta();
             Map<String,String> slovar=slovar();
-            decrypted.replaceAll(a->slovar.get():slovar.containsKey());
+            for (int i = 0; i < decrypted.size(); i++) {
+                String word=decrypted.get(i);
+                if(slovar.containsKey(word)){
+                    String replace=slovar.get(word);
+                    decrypted.set(i,replace);
+                }
+            }
         }
 
         public List<String> vvodTeksta() throws FileNotFoundException {
