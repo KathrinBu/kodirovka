@@ -6,8 +6,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kodirovka.HelloController">
    <children>
-      <TextArea fx:id="vvod" layoutX="14.0" layoutY="67.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextArea fx:id="result" layoutX="316.0" layoutY="67.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="button" layoutX="237.0" layoutY="155.0" mnemonicParsing="false" onAction="#doResult" prefHeight="71.0" prefWidth="52.0" text="click" />
+      <TextArea fx:id="vvod" layoutX="2.0" layoutY="42.0" prefHeight="71.0" prefWidth="591.0" />
+      <TextArea fx:id="result" layoutX="4.0" layoutY="241.0" prefHeight="71.0" prefWidth="591.0" />
+      <Button fx:id="button" layoutX="274.0" layoutY="143.0" mnemonicParsing="false" onAction="#doResult" prefHeight="71.0" prefWidth="52.0" text="click" />
    </children>
 </AnchorPane>

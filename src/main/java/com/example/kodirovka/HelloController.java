@@ -7,7 +7,6 @@ import javafx.scene.control.TextArea;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class HelloController {
     @FXML
@@ -17,8 +16,7 @@ public class HelloController {
     @FXML
     Button button;
 
-
-        public void doResult() throws FileNotFoundException {
+        public List<String> doResult() throws FileNotFoundException {
             List<String> decrypted=vvodTeksta();
             Map<String,String> slovar=slovar();
             for (int i = 0; i < decrypted.size(); i++) {
@@ -28,6 +26,8 @@ public class HelloController {
                     decrypted.set(i,replace);
                 }
             }
+            result.setText(decrypted.toString());
+            return decrypted;
         }
 
         public List<String> vvodTeksta() throws FileNotFoundException {
@@ -37,6 +37,7 @@ public class HelloController {
             while (scanner.hasNextLine()) {
                 arrayList.add(scanner.nextLine());
             }
+            vvod.setText(arrayList.toString());
             return arrayList;
         }
 
@@ -44,18 +45,13 @@ public class HelloController {
             File file = new File("2.txt");
             Scanner scanner = new Scanner(file);
             Map<String, String> map = new HashMap<>();
-            List<String> list;
-            String key = "";
-            String value="";
             while (scanner.hasNextLine()) {
-                list= new ArrayList<>(List.of(scanner.nextLine().split(" ")));
-                for (int i = 0; i < list.size(); i++) {
-                    if (i == 0) {
-                        key = list.get(i);
-                } else {
-                    value+= Integer.parseInt(list.get(i));
-                    }
-                } map.put(key,value);
+                String[] columns=scanner.nextLine().split("\s+");
+                if (columns.length>=2){
+                    String key=columns[0];
+                    String value=columns[1];
+                    map.put(key,value);
+                }
             }
 
             return map;
