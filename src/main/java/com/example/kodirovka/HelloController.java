@@ -18,7 +18,8 @@ public class HelloController {
 
     @FXML
     public void doResult() throws FileNotFoundException {
-        List<String> decrypted = vvodTeksta();
+        List<String> decrypted = vvodTeksta("1.txt");
+        //todo: сделать чтение текста из vvod
         Map<String, String> slovar = slovar();
         decrypted = encrypt(decrypted, slovar);
 
@@ -37,14 +38,14 @@ public class HelloController {
         return text;
     }
 
-    public List<String> vvodTeksta() throws FileNotFoundException {
-        File file = new File("1.txt");
+    public List<String> vvodTeksta(String fileName) throws FileNotFoundException {
+        File file = new File(fileName);
         Scanner scanner = new Scanner(file);
         ArrayList<String> arrayList = new ArrayList<>();
         while (scanner.hasNextLine()) {
             arrayList.add(scanner.nextLine());
         }
-        vvod.setText(arrayList.toString());
+
         return arrayList;
     }
 
@@ -62,6 +63,18 @@ public class HelloController {
         }
 
         return map;
+    }
+
+    public void initialize()
+    {
+        try {
+            List<String> text = vvodTeksta("1.txt");
+            vvod.setText(text.toString());
+        } catch (FileNotFoundException e) {
+            vvod.setText("файл не открылся");
+        }
+
+
     }
 }
 
