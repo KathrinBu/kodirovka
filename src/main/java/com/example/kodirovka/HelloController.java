@@ -19,16 +19,13 @@ public class HelloController {
     @FXML
     public void doResult() throws FileNotFoundException {
         List<String> decrypted = vvodTeksta("1.txt");
-        //todo: сделать чтение текста из vvod
         Map<String, String> slovar = slovar();
         decrypted = encrypt(decrypted, slovar);
-
         result.setText(decrypted.toString());
     }
 
     public List<String> encrypt(List<String> text, Map<String, String> slovar) {
         for (int i = 0; i < text.size(); i++) {
-            //todo пока что в переменной word целая большая фраза. Надо разбивать на слова
             String word = text.get(i);
             if (slovar.containsKey(word)) {
                 String replace = slovar.get(word);
@@ -40,12 +37,17 @@ public class HelloController {
 
     public List<String> vvodTeksta(String fileName) throws FileNotFoundException {
         File file = new File(fileName);
-        Scanner scanner = new Scanner(file);
         ArrayList<String> arrayList = new ArrayList<>();
+        Scanner scanner = new Scanner(file);
+       String line;
         while (scanner.hasNextLine()) {
-            arrayList.add(scanner.nextLine());
-        }
+            line=scanner.nextLine();
+            String[]vv=line.split(" ");
+            for (String w:vv) {
+                arrayList.add(w);
+            }
 
+        }
         return arrayList;
     }
 
